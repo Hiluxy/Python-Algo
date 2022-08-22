@@ -1,31 +1,19 @@
+# 어떤 지역의 높이 정보가 주어졌을 때, 장마철에 물에 잠기지 않는 안전한 영역의 최대 개수를 계산하는 프로그램을 작성하시오. 
+# 예제 입력 1 
+# 5
+# 6 8 2 6 2
+# 3 2 3 4 6
+# 6 7 3 3 2
+# 7 2 5 3 6
+# 8 9 5 2 7
+# 예제 출력 1 
+# 5
 
 import sys 
-sys.setrecursionlimit(10000)
+sys.setrecursionlimit(20000)
 
-# n=map(int,input().split())
-# g=[list(map(int,input().split())) for _ in range(n)]
-
-
-# g=[]
-# for i in range(n):
-#     g.append(list(map(int,input())))
-
-# n=5
-# g=[[6,8,2,6,2],
-# [3,2,3,4,6],
-# [6,7,3,3,2],
-# [7,2,5,3,6],
-# [8,9,5,2,7]]
-
-n=7
-g=[[9,9,9,9,9,9,9],
-[9, 2, 1, 2, 1, 2, 9],
-[9, 1, 8, 7, 8, 1, 9],
-[9, 2, 7, 9, 7, 2, 9],
-[9, 1, 8, 7, 8, 1, 9],
-[9, 2, 1, 2, 1, 2, 9],
-[9, 9, 9, 9, 9, 9, 9]]
-
+n=int(input())
+g=[list(map(int,input().split())) for _ in range(n)]
 
 def dfs(x,y):
     #범위를 벗어날 경우
@@ -47,13 +35,13 @@ def dfs(x,y):
 hmax=max(map(max, g))
 num_max=0
 for h in range(hmax):
-  #graph부분 초기화 비어있는곳0, 채운곳1 
+  #graph는 0으로 초기화한 후 h이하만 1로
   graph = [[0]*n for _ in range(n)]
   for i in range(n):
     for j in range(n):
       if g[i][j]<=h:
         graph[i][j]=1
-  #모든 노드(위치)에 대하여 채우기
+  #모든 노드(위치)에 대하여 채우기(0으로 이어진부분 개수 세기)
   result=0
   for i in range(n):
       for j in range(n):
