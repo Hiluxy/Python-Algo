@@ -15,7 +15,7 @@ def dfs(x,y):
     if x<=-1 or y<=-1 or x>=n or y>=m:
         return False
 
-	#방문하지 않았다면 1처리
+	#방문하지 않았다면 1처리,재귀호출,True
     if graph[x][y]==0:
         graph[x][y]=1
 
@@ -24,7 +24,7 @@ def dfs(x,y):
         dfs(x+1,y)
         dfs(x,y-1)
         dfs(x,y+1)
-        return True #이부분을 모르겠다..
+        return True 
     return False
 
 #모든 노드(위치)에 대하여 음료수 채우기
