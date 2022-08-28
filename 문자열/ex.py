@@ -1,12 +1,10 @@
-# n=7
-# # g=[list(map(int,input().split())) for _ in range(n)]
-# # print(g)
+# c=[]
+# re=["Enter uid1234 Muzi", "Enter uid4567 Prodo","Leave uid1234","Enter uid1234 Prodo","Change uid4567 Ryan"]
+# for i in re:
+#   c.append(list(map(str,i.split())))
+# print(c)
 
-# g=[]
-# for i in range(n):
-#     g.append(list(map(int,input())))
-
-# print(g)
-a=1
-b=2
-a+b
+a={'k1':3,'k2':5}
+a['k1']='6'
+a['k5']='4'
+print(a)
