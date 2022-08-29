@@ -11,8 +11,6 @@ def solution(openA,closeB):
       ans+=closeB[j]-openA[i]
       while openA[i]<closeB[j] and i<len(openA)-1:
         i+=1
-        if openA[i]>closeB[j]:
-          break
       j+=1
 
     else:
