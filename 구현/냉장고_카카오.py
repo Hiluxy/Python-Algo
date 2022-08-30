@@ -1,5 +1,6 @@
 #a는 문열고 b는 문 닫음. 냉장고문이 열려있는 총 시간은?
 #입력: a가 여는 시점, b가 닫는 시점
+#항상 b가 마지막으로 닫음. a랑 b 시점 겹치지 않음. 
 
 def solution(openA,closeB):
 
@@ -9,21 +10,29 @@ def solution(openA,closeB):
   while True:
     if openA[i]<closeB[j]:
       ans+=closeB[j]-openA[i]
-      j+=1
       while True:
         i+=1
-        if openA[i]>closeB[j-1]:
+        if i==len(openA)-1:
+          break
+        if openA[i]>closeB[j]:
+          break
+
+      #i가 마지막 인덱스이면서 closeB[j]보다 작음: 더 세어줄 필요가 없음. 
+      if i==len(openA)-1 and openA[i]<closeB[j]:
+        return ans
+
+      while True:
+        j+=1
+        if openA[i]<closeB[j]:
           break
 
     else:
       j+=1
     
-    # i나 j가 마지막 인덱스면 빠져나옴
-    if i==len(openA)-1 or j==len(closeB)-1: 
-      break
-    print(i,j,ans)
-  
-  return ans
+    # j가 마지막 인덱스면(항상 openA[i]<closeB[j]) 계산하고 빠져나옴
+    if j==len(closeB)-1: 
+      ans+=closeB[j]-openA[i]
+      return ans
 
 
 
