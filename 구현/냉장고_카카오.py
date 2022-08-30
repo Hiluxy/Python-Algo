@@ -6,12 +6,14 @@ def solution(openA,closeB):
   i=0
   j=0
   ans=0
-  while i < len(openA) and j < len(closeB):
+  while True:
     if openA[i]<closeB[j]:
       ans+=closeB[j]-openA[i]
-      while openA[i]<closeB[j] and i<len(openA)-1:
-        i+=1
       j+=1
+      while True:
+        i+=1
+        if openA[i]>closeB[j-1]:
+          break
 
     else:
       j+=1
@@ -19,6 +21,7 @@ def solution(openA,closeB):
     # i나 j가 마지막 인덱스면 빠져나옴
     if i==len(openA)-1 or j==len(closeB)-1: 
       break
+    print(i,j,ans)
   
   return ans
 
@@ -32,5 +35,5 @@ a2=[4,7,9,16]
 b2=[2,5,12,14,20]
 #10
 
-# print(solution(a1,b1))
+print(solution(a1,b1))
 print(solution(a2,b2))
