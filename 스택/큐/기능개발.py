@@ -23,8 +23,6 @@ def solution(progresses, speeds):
       answer.append(cnt)
   else:
       answer.append(1)
-  
-  
 
   return answer
 

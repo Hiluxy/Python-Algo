@@ -9,7 +9,7 @@ g=[list(map(int,sys.stdin.readline().split())) for _ in range(n)]
 # g=[[10, 15, 20], [20, 30, 25], [40, 22, 10]]
 
 dx=[-1,1,0,0]
-dy=[0,0,-1,-1]
+dy=[0,0,-1,1]
 
 def bfs(x,y):
     que=deque()
@@ -38,7 +38,7 @@ def bfs(x,y):
                 que.append((nx,ny))
         
     for x,y in union_idx:
-        g[x][y]=math.floor(sum/len(union_idx))
+        g[x][y]=sum//len(union_idx)
     
     return len(union_idx)
 
@@ -47,7 +47,7 @@ while True: #인구 이동 없을 때까지
     visit=[[False]*n for _ in range(n) ]
     check=False #인구 이동 있는지 check로 확인
     for i in range(n):
-        for j in range(n):
+        for j in range(i%2,n,2):
             if not visit[i][j]: #방문하지 않았을경우 
                 if bfs(i,j)>1:
                     check=True

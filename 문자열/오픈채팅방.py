@@ -10,7 +10,6 @@ def solution(record):
     for re in c:
       if re[0]=='Enter':
         id[re[1]]=re[2]
-        # answer.append(id[re[1]]+"님이 들어왔습니다.")
         
       elif re[0]=='Change':
         id[re[1]]=re[2]

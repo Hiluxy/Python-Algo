@@ -3,7 +3,9 @@ from itertools import product
 
 def solution(numbers, target):
     pm=[(x,-x) for x in numbers]
-    nums=list(map(sum,product(*pm)))
+    # # for x in numbers:
+    #     pm.append((x,-x))
+    nums=list(map(sum,product(*pm)))  
     answer=nums.count(target)
     return answer
 
