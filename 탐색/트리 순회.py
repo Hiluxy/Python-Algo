@@ -10,7 +10,7 @@ for i in range(n):
 
 #tree={'A': ('B', 'C'), 'B': ('D', '.'), 'C': ('E', 'F'), 'E': ('.', '.'), 'F': ('.', 'G'), 'D': ('.', '.'), 'G': ('.', '.')}
 
-# 전위 순회
+# 전위 순회  (루트) (왼쪽 자식) (오른쪽 자식)
 def preorder(v):
     if v != ".": # 자식이 있다면
         print(v, end="") # 루트 노드 출력
@@ -18,7 +18,7 @@ def preorder(v):
         preorder(tree[v][1]) # 재귀적으로 오른쪽 노드 탐색
 
 
-# 중위 순회
+# 중위 순회 (왼쪽 자식) (루트) (오른쪽 자식)
 def inorder(v):
     if v != ".": # 자식이 있다면
         inorder(tree[v][0]) # 재귀적으로 왼쪽 노드 탐색
@@ -26,7 +26,7 @@ def inorder(v):
         inorder(tree[v][1]) # 재귀적으로 오른쪽 노드 탐색
 
 
-# 후위 순회
+# 후위 순회  (왼쪽 자식) (오른쪽 자식) (루트)
 def postorder(v):
     if v != ".": # 자식이 있다면
         postorder(tree[v][0]) # 재귀적으로 왼쪽 노드 탐색
