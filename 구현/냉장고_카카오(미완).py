@@ -1,5 +1,5 @@
 #a는 문열고 b는 문 닫음. 냉장고문이 열려있는 총 시간은?
-#입력: a가 여는 시점, b가 닫는 시점
+#입력: a가 여는 시점, b가 닫는 시점 (안겹침)
 
 def solution(openA,closeB):
 
@@ -20,7 +20,7 @@ def solution(openA,closeB):
       j+=1
     
         # i나 j가 마지막 인덱스면 빠져나옴
-    if i==len(openA)-1 and j==len(closeB): 
+    if i==len(openA)-1 and j==len(closeB)-1: 
       ans+=closeB[j]-openA[i]
       break
   
