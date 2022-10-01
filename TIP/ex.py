@@ -14,5 +14,6 @@
 # if numbers[0]=='one':
 #     print("1")
 
-dic={1:[(1,1),(1,2)] ,2:[(2,1),(2,2)]}
-print ( (1,1) in dic.values() )
+# dic={1:[(1,1),(1,2)] ,2:[(2,1),(2,2)]}
+# print ( (1,1) in dic.values() )
+

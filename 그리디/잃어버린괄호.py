@@ -15,3 +15,5 @@ for a in arr:
 
 print(num)
 
+#print(eval("1+5"))
+print(eval("1+005"))
