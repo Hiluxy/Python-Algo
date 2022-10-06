@@ -30,7 +30,7 @@ def bfs(graph, vv, visited):
             if not visited[i]:
                 queue.append(i)
                 visited[i] = True
-            else:
+            
                 cnt+=1
     
     return cnt
