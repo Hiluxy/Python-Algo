@@ -21,4 +21,4 @@ print(map(max,a)) #<map object at 0x10522c490>
 print(max(map(max,a))) #2
 print(max(map(max,b))) #[0, 0, 4]
 print(max(map(max,b[0])))#2
-print(max(map(max,b[1])))
+print(max(map(max,b[1])))#4

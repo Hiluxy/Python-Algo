@@ -1,7 +1,5 @@
 from collections import deque
 
-def solution(maps):
-    return bfs(maps,0,0)
 
 def bfs(g,sx,sy):
     n=len(g)
@@ -10,7 +8,7 @@ def bfs(g,sx,sy):
     dy=[0,0,-1,1]
     que=deque()
     que.append((sx,sy))
-    visited=[[False]*m for n in range(5)]
+    visited=[[False]*m for _ in range(m)]
     #큐가 빌 때까지 반복
     while que:
         x,y=que.popleft()
@@ -18,19 +16,20 @@ def bfs(g,sx,sy):
         for i in range(4):
             nx=x+dx[i]
             ny=y+dy[i]
-            if 0<=nx<m and 0<=ny<n and g[nx][ny]==1 and visited[nx][ny]==False:
+            if nx<0 or ny<0 or nx>=n or ny>=m:
+                continue
+            if g[nx][ny]==0:
+                continue
+            if g[nx][ny]==1 and visited[nx][ny]==False:
                 g[nx][ny]=g[x][y]+1
                 que.append((nx,ny))
                 visited[nx][ny]=True
-
-    if visited[m-1][n-1]==False:
-        return -1
-    else:
-        return g[m-1][n-1]
-
+    return g[-1][-1]
 
 if __name__ == "__main__":
-    #11,-1
-    board=[[[1,0,1,1,1],[1,0,1,0,1],[1,0,1,1,1],[1,1,1,0,1],[0,0,0,0,1]],[[1,0,1,1,1],[1,0,1,0,1],[1,0,1,1,1],[1,1,1,0,0],[0,0,0,0,1]]]
-    for b in board:
-        print(solution(b))
+    n,m=map(int,input().split())
+    g=[]
+    for i in range(n):
+        g.append(list(map(int,input())))
+    result=bfs(g,0,0)
+    print(result)
