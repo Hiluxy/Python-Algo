@@ -62,7 +62,14 @@
 #                 new.append(c.replace('.',dot))
 
 
-U_dic={}
-if 'A' in U_dic:
-    U_dic['A']=1
-print(U_dic)
+# U_dic={}
+# if 'A' in U_dic:
+#     U_dic['A']+=1
+# print(U_dic)
+from collections import deque
+
+list=[5,1,3,9,3,2]
+list.reverse()
+que=deque(list)
+print(que.pop(3))
+print(que)
