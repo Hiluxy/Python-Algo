@@ -1,45 +1,34 @@
-'''
-입력값 〉	3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]]
-기댓값 〉	2
-입력값 〉	3, [[1, 1, 0], [1, 1, 1], [0, 1, 1]]
-기댓값 〉	1
-'''
-
 from collections import deque
 
 
 def solution(n, computers):
-    visited = [False] * n
-    # 정의된 BFS 함수 호출
-    answer=bfs(computers, 0, visited)
-    return answer
-
-# BFS 함수 정의
-def bfs(graph, vv, visited):
+    visited=[False]*n
     cnt=0
-    # 큐(Queue) 구현을 위해 deque 라이브러리 사용
-    queue = deque([vv])
-    # 현재 노드를 방문 처리
-    visited[vv] = True
-    # 큐가 빌 때까지 반복
-    while queue:
-        # 큐에서 하나의 원소를 뽑아 출력
-        v = queue.popleft()
-        # 해당 원소와 연결된, 아직 방문하지 않은 원소들을 큐에 삽입
-        for i in graph[v]: #graph[v]=[1, 1, 0]
-            if not visited[i]:
-                queue.append(i)
-                visited[i] = True
-            
-                cnt+=1
-    
+    for i in range(n):
+        if bfs(computers,i,visited)==True:
+            cnt+=1
     return cnt
 
+def bfs(g,start,visited):
+    #이미 시작노드가 방문된 경우
+    if visited[start]==True:
+        return False
+    
+    que=deque()
+    que.append(start)
+    visited[start]=True
+    while que:
+        node=que.popleft()
+        for i in range(len(g[node])): #g[node]=[1,1,0]..
+            if g[node][i]==1 and visited[i]==False:
+                que.append(i)
+                visited[i]=True
+    return True
 
 
-def main():
-    #print(solution(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]]))
+
+
+if __name__ == '__main__':
+    print(solution(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]]))
     print(solution(3, [[1, 1, 0], [1, 1, 1], [0, 1, 1]]))
     
-if __name__ == '__main__':
-    main()

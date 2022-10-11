@@ -2,13 +2,18 @@ from collections import deque
 
 
 def solution(maps):
+        visited = [[False] * len(maps[0]) for i in range(len(maps))]
+        for x in range(len(maps)) :
+            for y in range(len(maps[0])):
+                if visited[x][y]==False and maps[x][y]=='.': ##############굿굿굿굿
+                    bfs(x,y,maps,visited)
 
-def bfs(x,y,maps):
+def bfs(x,y,maps,visited):
     n=len(maps)
     m=len(maps[0])    
     dx=[-1,1,0,0]
     dy=[0,0,-1,1]
-    visited = [[False] * m for i in range(n)]
+
     U_dic={}#영토 안 {A:3,B:5,,,}
     que=deque()
     que.append((x,y))#탐색하려는 좌표 담기
@@ -24,7 +29,6 @@ def bfs(x,y,maps):
                 continue
             #.인 경우 무시
             if maps[nx][ny]=='.':
-                visited[nx][ny]==True #방문처리
                 continue   
             #처음 방문시
             if visited[nx][ny]==False:
@@ -32,6 +36,8 @@ def bfs(x,y,maps):
                     U_dic[maps[nx][ny]]+=1
                 else:
                     U_dic[maps[nx][ny]]=1
+            
+            
     
 
 

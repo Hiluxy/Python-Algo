@@ -8,7 +8,7 @@ def bfs(g,sx,sy):
     dy=[0,0,-1,1]
     que=deque()
     que.append((sx,sy))
-    visited=[[False]*m for _ in range(m)]
+    #visited=[[False]*m for _ in range(m)]
     #큐가 빌 때까지 반복
     while que:
         x,y=que.popleft()
@@ -20,10 +20,9 @@ def bfs(g,sx,sy):
                 continue
             if g[nx][ny]==0:
                 continue
-            if g[nx][ny]==1 and visited[nx][ny]==False:
+            if g[nx][ny]==1 :
                 g[nx][ny]=g[x][y]+1
                 que.append((nx,ny))
-                visited[nx][ny]=True
     return g[-1][-1]
 
 if __name__ == "__main__":

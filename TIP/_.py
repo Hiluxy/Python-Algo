@@ -62,8 +62,7 @@
 #                 new.append(c.replace('.',dot))
 
 
-n=int(input())
-g=[]
-for _ in range(n):
-    g.append(list(map(int,input().split())))
-print(g)
+U_dic={}
+if 'A' in U_dic:
+    U_dic['A']=1
+print(U_dic)

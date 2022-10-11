@@ -17,7 +17,7 @@ def bfs(g,x,y):
             nx=x+dx[i]
             ny=y+dy[i]
             #이동 가능 
-            if 0<=nx<n and 0<=ny<n and size>=g[nx][ny]:#진짜 이동 가능한 경우
+            if 0<=nx<n and 0<=ny<n and size>=g[nx][ny] and visited[nx][ny]==False:#진짜 이동 가능+아직 방문 안함
                 visited[nx][ny]=True
                 que.append((nx,ny))
                 move+=1
