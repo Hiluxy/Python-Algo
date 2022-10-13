@@ -20,7 +20,7 @@ visited=[False]*n
 def bfs(start,visited):
     que=deque()
     que.append(start)
-    visited[start]==True
+    visited[start]=True
     while que:
         node=que.popleft()
         for val in dic[node]:

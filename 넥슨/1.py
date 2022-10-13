@@ -1,3 +1,5 @@
+#통과
+
 def minNum(samDaily, kellyDaily, difference):
     sam=samDaily+difference
     kelly=kellyDaily
