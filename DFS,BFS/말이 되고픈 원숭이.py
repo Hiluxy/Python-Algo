@@ -24,7 +24,7 @@ def bfs(x,y,k):
                 nx=x+hdx[i]
                 ny=y+hdy[i]
                 #공간 안& 처음 방문 & 갈 수 있는 길(0)
-                if 0 <= nx < n and 0 <= ny < m and visit[nx][ny][k-1]==0 and g[ny][nx]==0:
+                if 0 <= nx < n and 0 <= ny < m and visit[nx][ny][k-1]==0 and g[nx][ny]==0:
                     visit[nx][ny][k-1]=visit[x][y][k]+1
                     que.append((nx,ny,k-1)) 
 
@@ -32,7 +32,7 @@ def bfs(x,y,k):
             nx=x+mdx[j]
             ny=x+mdy[j] 
             #공간 안& 처음 방문 & 갈 수 있는 길(0)
-            if 0 <= nx < n and 0 <= ny < m and visit[nx][ny][k]==0 and g[ny][nx]==0:
+            if 0 <= nx < n and 0 <= ny < m and visit[nx][ny][k]==0 and g[nx][ny]==0:
                 visit[nx][ny][k]=visit[x][y][k]+1
                 que.append((nx,ny,k)) 
     

@@ -1,4 +1,4 @@
-#런타임에러
+
 from collections import deque
 
 
@@ -16,7 +16,7 @@ for _ in range(n):
 
 #노드 0번부터 시작으로 계산
 #dic={0: {1, 4}, 1: {0, 2, 4}, 2: {1}, 3: {6}, 4: {0, 1, 5}, 5: {4}, 6: {3}}
-visited=[False]*(n)
+visited=[False]*num
 
 def bfs(start,visited):
     que=deque()
@@ -24,8 +24,6 @@ def bfs(start,visited):
     visited[start]=True
 
     while que:
-        print(que)
-        print(visited)
         node=que.popleft()
         for val in dic[node]: 
             if visited[val]==False:
@@ -33,6 +31,7 @@ def bfs(start,visited):
                 visited[val]=True
 
 bfs(0,visited)
+#visited=[True, True, True, False, True, True, False]
 cnt=0
 for v in visited:
     if v==True:
