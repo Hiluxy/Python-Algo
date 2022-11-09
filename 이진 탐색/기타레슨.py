@@ -26,8 +26,9 @@ def b(arr,start,end,m):
 
 
 if __name__ == "__main__":
-    n,m=9,3
-    arr=[1,2,3,4,5,6,7,8,9]
+    n,m=map(int,input().split())
+    arr=list(map(int,input().split()))
+
     start=max(arr)
     end=sum(arr)
     print(b(arr,start,end,m))
