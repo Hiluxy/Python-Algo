@@ -29,15 +29,25 @@ def solution(target):
     
     left,right=0,1
     cnt=0
-    for left in range(len(dec)):
-        right=left+1
-        while tmp<target and right<len(dec):
-            tmp=sum(dec[left:right+1])
-            right+=1
-            if tmp==target:
-                cnt+=1
-                break
-    
+    while(left<len(dec)):
+        tmp=sum(dec[left:right+1])
+        if tmp<target:
+            if(right<len(dec)):
+                right+=1
+                continue
+            else:
+                left+=1
+                right=left+1
+                continue
+        if tmp==target:
+            cnt+=1
+            left+=1
+            right=left+1
+            continue
+        if tmp>target:
+            left+=1
+            right=left+1
+            continue
     return cnt
 
 if __name__ == '__main__':
