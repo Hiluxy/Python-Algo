@@ -15,8 +15,6 @@ def solution(triangle):
             else:
                 d[i][j]=max(d[i-1][j-1],d[i-1][j])+triangle[i][j]
             
-            print(d)
-
     return max(d[n-1])
 
 print(solution([[7], [3, 8], [8, 1, 0], [2, 7, 4, 4], [4, 5, 2, 6, 5]]))
