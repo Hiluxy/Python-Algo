@@ -1,30 +1,29 @@
 # n=int(input())
 # g=[[] for _ in range(n+1)] #연결 노드 저장
 # sw_num=[[] for _ in range(n+1)] #[[] ['S',100]...]
-# visited=[False for _ in range(n+1)]
-# tail=[]
 
-# for i in range(2,n+1): #2번노드부터 n까지
+# for i in range(n-1): #2번노드부터 n까지
 #     a,b,c=map(str,input().split())
-#     b=int(b)
-#     c=int(c)
-#     g[i].append(c)
-#     g[c].append(i)
-#     sw_num[i].append([a,b])
+#     g[int(c)].append(i+2)
+#     sw_num[i].append(a,int(b))
 
-# #sw_num=[[], [], [['S', 100]], [['S', 100]], [['W', 100]], [['S', 1000]], [['W', 1000]], [['S', 900]]]
-# #g=[[], [2, 3, 4], [1, 5, 6], [1], [1], [2], [2, 7], [6]]
+# print(sw_num)
+# print(g)
 
+# result=0
 # def dfs(v):
-#     visited[v]=True
 #     for i in g[v]:#[2,3,4]
-#         if visited[i]==False:
-#             dfs(i)
-#         else: #자식 노드가 없음
-#             tail.append(v)
+#         #양인 경우
+#         if g[v][0]=='S':
+#             result+=g[v][1]
+#         #늑대인 경우
+#         else:
+#             result-=g[v][1]
+#             if result<0:
+#                 result=0
 
 # dfs(1)
-# print(tail)
+# print(result)
 
 # 0. 입력받기
 import sys
@@ -32,8 +31,8 @@ sys.setrecursionlimit(123458)
 input = sys.stdin.readline
 
 N = int(input())
-tree = [[] for _ in range(N+1)]
-node = [[], [0,0]]
+tree = [[] for _ in range(N+1)] #[[], [2, 3, 4], [5, 6], [], [], [], [7], []]
+node = [[], [0,0]] #[[], [0, 0], ['S', 100], ['S', 100], ['W', 100], ['S', 1000], ['W', 1000], ['S', 900]]
 
 # 1. 트리구조 만들기
 for i in range(N-1):
@@ -41,8 +40,7 @@ for i in range(N-1):
     tree[int(connection)].append(i+2)
     node.append([kind, int(number)])
 
-print(node)
-print(tree)
+
 
 # 2. dfs를 이용하여 탐색하기
 def dfs(v): # v : 현재 노드
