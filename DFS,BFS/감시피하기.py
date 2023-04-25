@@ -16,10 +16,6 @@ for i in range(n):
         if graph[i][j]=='X':
             empty_idx.append((i,j))
 
-def printGraph(graph):
-    for i in range(len(graph)):
-        print(graph[i])
-        
 def teacherWatch(x,y,direction):
     #←왼
     if direction==0:
@@ -80,7 +76,6 @@ for wall_idx in combinations(empty_idx,3):
         continue
     if not process():#성공
         flag=True
-        printGraph(graph)
         break
 
 if flag:
