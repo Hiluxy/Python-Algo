@@ -14,4 +14,4 @@ while len(heap)!=1:
     result+=sum
     heapq.heappush(heap,sum)
 
-print(heapq.heappop(heap))
+print(result)
