@@ -1,71 +1,50 @@
-r,c,time=6,7,3
-input=[  ['.', '.', '.', '.', '.', '.', '.'],
-  ['.', '.', '.', 'O', '.', '.', '.'],
-  ['.', '.', '.', '.', '.', 'O', '.'],
-  ['.', '.', '.', '.', '.', '.', '.'],
-  ['O', 'O', '.', '.', '.', '.', '.'],
-  ['O', 'O', '.', '.', '.', '.', '.']
-]
-graph=[[-1] * c for _ in range(r)]#폭탄시간저장 2차원그래프, 빈 공간:-1
-empty=set() #빈 위치 저장
+import sys
+input = sys.stdin.readline
+
+r,c,time= map(int, input().split())
+board = [list(input().strip()) for _ in range(r)]
 
 
-def printGraph(graph):
-    for i in range(len(graph)):
-        print(graph[i])  
-    print()
+dx=[-1,1,0,0]
+dy=[0,0,-1,1]
 
-#초기 그래프 갱신
-for i in range(r):
-    for j in range(c):
-        if input[i][j]=='O':
-            graph[i][j]=3
-        else:
-            graph[i][j]=-1
 
-printGraph(graph)
-
-while time>=0:
-     
-    #폭탄시간 -1 갱신
+if time<=1:
+    for l in board:
+        print(''.join(l))
+if time%2==0: #짝수시간 -> 전체가 폭탄
     for i in range(r):
-        for j in range(c):
-            graph[i][j]-=1
-            #폭탄 터지면 터진위치+사방 set저장
-            if graph[i][j]==0:
-                empty.add((i,j))
-                empty.add((i+1,j))
-                empty.add((i-1,j))
-                empty.add((i,j+1))
-                empty.add((i,j-1))
-                
-
-    #폭탄 터진 위치를 -1으로 갱신해줌 
-    for x,y in empty:
-        if 0<=x<r and 0<=y<c:
-            graph[x][y]=-1
-
-    empty=set() #초기화(남은 범위 아닌 위치들)
-
-    #봄버맨: 2초마다 설치
-    if time%2==0:
-        #빈 공간에 설치
-        for i in range(r):
-            for j in range(c):
-                if graph[i][j]<=-1:
-                    graph[i][j]=3
-            
-    time-=1
-    printGraph(graph)
+        print('O'*c)
+else:
+    #ver.1 ->검정 범위 밖에 주황폭탄 있음
+    #borad(초기)와 bomb1 비교
+    bomb1=[['O']*c for i in range(r)]
+    for y in range(r):
+        for x in range(c):#검정폭탄+상하좌우 . 으로 만든다
+            if board[y][x]=='O':
+                bomb1[y][x]=='.'
+            else :
+                for i in range(4):
+                    if 0<=y+dy[i]<r and 0<=x+dx[i]<c and board[y+dy[i]][x+dx[i]]=='O' :
+                        bomb1[y][x]='.'
+                        break
     
-
- 
-
-#출력
-for i in range(r):
-    for j in range(c):
-        if graph[i][j]==-1:
-            print(".")
-        else:
-            print("O")
-    print()
+    #ver.2(이하 같음)
+    #bomb1와 bomb2 비교
+    bomb2=[['O']*c for i in range(r)]
+    for y in range(r):
+        for x in range(c):
+            if bomb1[y][x]=='O':
+                bomb2[y][x]=='.'
+            else:
+                for i in range(4):
+                    if 0<=y+dy[i]<r and 0<=x+dx[i]<c and bomb1[y+dy[i]][x+dx[i]]=='O':
+                        bomb2[y][x]='.'
+                        break
+    
+    if time%4==3: #3,7,9.. bom1출력
+        for l in bomb1:
+            print(''.join(l))
+    if time%4==1: #5,9,13.. bom2출력
+        for l in bomb2:
+            print(''.join(l))
