@@ -11,7 +11,7 @@ while 1:
     if dist>result:
         dist-=arr[left]
         left+=1 
-    if right==n:
+    elif right==n:
         break
     else:
         dist+=arr[right]
