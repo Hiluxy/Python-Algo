@@ -12,17 +12,16 @@ while True:
     if(sum<m):
         if right<n:
             sum+=arr[right]
+            right+=1
         else:
             break
     #m에 도달하면
     elif(sum==m):
+        sum-=arr[left] #왜?
         left+=1
-        right=left+1
-        sum=0
         cnt+=1
     #m에 도달하지 못하고 값만 커지면 -> 실패
     else:
+        sum-=arr[left]
         left+=1
-        right=left+1
-        sum=0
 print(cnt)        
